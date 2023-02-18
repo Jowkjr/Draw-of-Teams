@@ -2,12 +2,15 @@ const inputName = document.getElementById("name");
 const btnAdd = document.getElementById("add");
 const allPlayers = document.getElementById("all-players");
 const result = document.getElementById("result");
+const drawBtn = document.querySelector(".draw");
 
 let number = 0;
 
 let players = [];
 
 btnAdd.addEventListener("click", addPlayer);
+
+drawBtn.addEventListener("click", draw);
 
 function addPlayer(e) {
   e.preventDefault();
@@ -47,4 +50,12 @@ function remove() {
 function numberResult() {
   const listItem = document.getElementsByClassName("player");
   result.innerText = listItem.length.toString();
+}
+
+let oneTeam = [];
+
+function draw() {
+  for (let i = 0; i < players.length / 2; i++) {
+    oneTeam.push(players[Math.floor(Math.random() * players.length)]);
+  }
 }

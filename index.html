@@ -19,18 +19,21 @@
       <h1>Draw of Teams</h1>
 
       <form>
-        <label for="text">Player Name</label>
+        <label for="text" class="label">Player Name</label>
         <input type="text" id="name" />
-        <button id="add"><i class="fa-solid fa-plus"></i></button>
+        <button id="add" class="add"><i class="fa-solid fa-plus"></i></button>
       </form>
-      <span id="result">0</span>
+
       <div class="list">
-        <h2>Players</h2>
-        <div class="all-players" id="all-players"></div>
-        <!-- <div class="team teamOne"></div> -->
-        <!-- <div class="team teamTwo"></div> -->
+        <h2>Players <span class="result" id="result">0</span></h2>
+        <div class="all-players" id="all-players">
+          <div class="team team--one"></div>
+          <div class="team team--two"></div>
+        </div>
       </div>
+      <button id="draw" class="draw">Draw</button>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
