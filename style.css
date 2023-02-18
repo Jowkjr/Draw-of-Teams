@@ -12,8 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Roboto", sans-serif;
-  background-color: #85ffbd;
-  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  background-color: #8ecae6;
   height: 100vh;
 }
 
@@ -22,14 +21,17 @@ body {
   position: relative;
   flex-direction: column;
   align-items: center;
+  /* min-width: 90%; */
   width: 50vw;
-  height: 80vh;
-  background-color: #08aeea;
-  background-image: linear-gradient(0deg, #08aeea 0%, #2af598 100%);
+  /* height: 80%; */
+  min-height: 80%;
+  background-color: #219ebc;
+  border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 h1 {
+  color: #fff;
   margin: 3% 0;
 }
 
@@ -51,7 +53,7 @@ form * {
   width: 80%;
   height: 100%;
   margin-bottom: 2%;
-  border: 5px solid yellowgreen;
+  border: 5px solid #023047;
 }
 
 h2 {
@@ -61,10 +63,12 @@ h2 {
 .all-players {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  margin-left: 2%;
 }
 
 span {
+  /* color: #fb8500; */
   margin: 0.5%;
   font-size: 15px;
 }
