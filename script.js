@@ -53,9 +53,57 @@ function numberResult() {
 }
 
 let oneTeam = [];
+let twoTeam = [];
 
 function draw() {
+  allPlayers.innerHTML = "";
+
   for (let i = 0; i < players.length / 2; i++) {
     oneTeam.push(players[Math.floor(Math.random() * players.length)]);
   }
+
+  twoTeam = players.filter((n) => !oneTeam.includes(n));
+
+  firstTeam(oneTeam);
+  secondTeam(twoTeam);
 }
+
+function firstTeam() {
+  // console.log(oneTeam);
+  const div = document.createElement("div");
+
+  div.classList.add("team--one");
+
+  allPlayers.appendChild(div);
+  for (let i = 0; i < oneTeam.length; i++) {
+    let span = document.createElement("span");
+    span.classList.add("name");
+    span.innerHTML = oneTeam[i];
+    div.appendChild(span);
+  }
+
+  // oneTeam.forEach((item, idx) => {
+  //   // item.createElement("span");
+  //   // allPlayers.appendChild(item);
+  //   console.log(item, idx);
+  // });
+}
+
+function secondTeam() {
+  console.log(twoTeam);
+  const div = document.createElement("div");
+
+  div.classList.add("team--two");
+  allPlayers.appendChild(div);
+
+  for (let i = 0; i < twoTeam.length; i++) {
+    let span = document.createElement("span");
+    span.classList.add("name");
+    span.innerHTML = twoTeam[i];
+    div.appendChild(span);
+  }
+}
+
+// function anotherTeam() {
+//   players = [];
+// }
