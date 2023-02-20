@@ -115,6 +115,7 @@ function removeBtn() {
     removeBtn.classList.add("add-remove");
     removeBtn.id = "remove";
     removeBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    removeBtn.style.backgroundColor = "red";
     buttonsContainer.appendChild(removeBtn);
   } else {
     return;
