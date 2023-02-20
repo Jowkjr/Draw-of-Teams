@@ -4,7 +4,7 @@ const allPlayers = document.getElementById("all-players");
 const result = document.getElementById("result");
 const drawBtn = document.querySelector(".draw");
 
-let number = 0;
+const buttonsContainer = document.querySelector(".buttons");
 
 let players = [];
 
@@ -16,20 +16,19 @@ function addPlayer(e) {
   e.preventDefault();
   let playerName = inputName.value;
   if (playerName) {
-    number++;
+    const div = document.createElement("div");
+    div.classList.add("player");
 
-    const span = document.createElement("span");
-
-    span.innerHTML = ` <div class="player">
+    div.innerHTML = `
     <i class="fa-solid fa-user"></i>
     <span>${playerName}</span>
     <button class="x"> 
       X
     </button>
-    </div>`;
+   `;
 
     players.push(playerName);
-    allPlayers.appendChild(span);
+    allPlayers.append(div);
     inputName.value = "";
     numberResult();
   }
@@ -56,54 +55,68 @@ let oneTeam = [];
 let twoTeam = [];
 
 function draw() {
-  allPlayers.innerHTML = "";
+  if (players.length > 1) {
+    allPlayers.innerHTML = "";
+    oneTeam = [];
+    twoTeam = [];
 
-  for (let i = 0; i < players.length / 2; i++) {
-    oneTeam.push(players[Math.floor(Math.random() * players.length)]);
+    allPlayers.classList.add("active");
+    for (let i = 0; i < players.length / 2; i++) {
+      let random = players[Math.floor(Math.random() * players.length)];
+      if (oneTeam.includes(random)) {
+        i = i - 1;
+      } else {
+        oneTeam.push(random);
+      }
+    }
+
+    twoTeam = players.filter((n) => !oneTeam.includes(n));
+
+    firstTeam();
+    secondTeam();
+    removeBtn();
+  } else {
+    return;
   }
 
-  twoTeam = players.filter((n) => !oneTeam.includes(n));
+  function firstTeam() {
+    const div = document.createElement("div");
+    div.innerText = "First Team";
+    div.classList.add("team--one");
 
-  firstTeam(oneTeam);
-  secondTeam(twoTeam);
-}
+    allPlayers.appendChild(div);
 
-function firstTeam() {
-  // console.log(oneTeam);
-  const div = document.createElement("div");
-
-  div.classList.add("team--one");
-
-  allPlayers.appendChild(div);
-  for (let i = 0; i < oneTeam.length; i++) {
-    let span = document.createElement("span");
-    span.classList.add("name");
-    span.innerHTML = oneTeam[i];
-    div.appendChild(span);
+    for (let i = 0; i < oneTeam.length; i++) {
+      let span = document.createElement("span");
+      span.classList.add("name");
+      span.innerHTML = ` <i class="fa-solid fa-user"></i> ${oneTeam[i]}`;
+      div.appendChild(span);
+    }
   }
-
-  // oneTeam.forEach((item, idx) => {
-  //   // item.createElement("span");
-  //   // allPlayers.appendChild(item);
-  //   console.log(item, idx);
-  // });
 }
 
 function secondTeam() {
-  console.log(twoTeam);
   const div = document.createElement("div");
-
+  div.innerText = "Second Team";
   div.classList.add("team--two");
   allPlayers.appendChild(div);
 
   for (let i = 0; i < twoTeam.length; i++) {
     let span = document.createElement("span");
     span.classList.add("name");
-    span.innerHTML = twoTeam[i];
+    span.innerHTML = ` <i class="fa-solid fa-user"></i> ${twoTeam[i]}`;
     div.appendChild(span);
   }
 }
 
-// function anotherTeam() {
-//   players = [];
-// }
+function removeBtn() {
+  if (buttonsContainer.children.length === 1) {
+    const removeBtn = document.createElement("button");
+    removeBtn.classList.add("add-remove");
+    removeBtn.id = "remove";
+    removeBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    buttonsContainer.appendChild(removeBtn);
+  } else {
+    return;
+  }
+}

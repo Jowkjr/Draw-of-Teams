@@ -17,20 +17,19 @@
   <body>
     <div class="container">
       <h1>Draw of Teams</h1>
-
       <form>
         <label for="text" class="label">Player Name</label>
-        <input type="text" id="name" />
-        <button id="add" class="add"><i class="fa-solid fa-plus"></i></button>
+        <input type="text" class="input" id="name" />
+        <div class="buttons">
+          <button id="add" class="add-remove"><i class="fa-solid fa-plus"></i></button>
+        </div>
       </form>
-
       <div class="list">
-        <h2>Players <span class="result" id="result">0</span></h2>
+        <h2>Players:<span class="result" id="result">0</span></h2>
         <div class="all-players" id="all-players"></div>
       </div>
       <button id="draw" class="draw">Draw</button>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
